@@ -13,7 +13,7 @@ h1{
 }
 
 #InputBuku{
-    width: 300px;
+    width: 210px;
     height: 25px;
     border-radius: 5px;
 }
@@ -59,13 +59,13 @@ li{
 
 .Done{
     color: rgb(62, 216, 62);
-    right: 75px;
-}
-
-.Edit{
-    color: rgb(248, 153, 115);
     right: 50px;
 }
+
+/* .Edit{
+    color: rgb(248, 153, 115);
+    right: 75px;
+} */
 
 .Close{
     color: rgb(255, 0, 0);

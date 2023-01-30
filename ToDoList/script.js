@@ -4,7 +4,7 @@ const Tambah = document.querySelector("#TombolTambah");
 const Ascending = document.querySelector("#SortAscending");
 
 Data.addEventListener("click", (e) =>{
-    /* Mengecek class apakah bernilai close sehingga ketika terpenuhi maka hapus dengan
+    /* Mengecek class apakah bernilai Close sehingga ketika terpenuhi maka hapus dengan
        set diplay menjadi none */
     if(e.target.className == "Close"){
         const Opsi = Number(prompt("Apakah Anda Yakin Untuk Menghapus ini ? (1. Ya, 2. Tidak)"), [1, 2]);
@@ -16,6 +16,8 @@ Data.addEventListener("click", (e) =>{
         } else {
             alert("Terjadi Kesalahan");
         }
+    /* Mengecek class apakah bernilai Done sehingga ketika terpenuhi maka coret dengan
+       set text-decoration menjadi line-through */
     } else if(e.target.className == "Done"){
         const Opsi = Number(prompt("Apakah Anda Yakin Untuk Menyelesaikan ini ? (1. Ya, 2. Tidak)"), [1, 2]);
         if(Opsi == 1){
@@ -28,17 +30,6 @@ Data.addEventListener("click", (e) =>{
         } else {
             alert("Terjadi Kesalahan");
         }
-    } else if(e.target.className == "Edit"){
-        const Teks = String(prompt("Inputan Baru = "));
-        const Nilai = document.createTextNode(Teks).value;
-        Draf.forEach(Tampung =>{
-            Nilai = Tampung;
-            const Bantu = "<li>" + 
-                        Nilai.value; + 
-                        "<span class='Done'>&radic;</span>" +
-                        "<span class='Close'> X </span>" + 
-                        "</li>" ;
-        })
     }
 });
 
@@ -71,12 +62,3 @@ Tambah.addEventListener("click", ()=>{
     // console.log(Draf);
 
 });
-
-// Ascending.addEventListener("click", ()=>{
-//     let Bantu = [];
-//     Draf.forEach(Tampung =>{
-//         // Bantu += Tampung;
-//         Bantu += Bantu[Tampung];
-//         console.log(Bantu);
-//     });
-// });
