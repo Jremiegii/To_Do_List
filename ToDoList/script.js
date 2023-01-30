@@ -5,31 +5,46 @@ const Ascending = document.querySelector("#SortAscending");
 
 Data.addEventListener("click", (e) =>{
     /* Mengecek class apakah bernilai Close sehingga ketika terpenuhi maka hapus dengan
-       set diplay menjadi none */
+       set diplay menjadi none 
+    */
     if(e.target.className == "Close"){
-        const Opsi = Number(prompt("Apakah Anda Yakin Untuk Menghapus ini ? (1. Ya, 2. Tidak)"), [1, 2]);
-        if(Opsi == 1){
-            e.target.parentElement.style.display = "none";
-            e.preventDefault();
-        }else if(Opsi == 2){
-            //
-        } else {
-            alert("Terjadi Kesalahan");
-        }
+        swal({
+            title: "Peringatan",
+            text: "Apakah Anda Yakin Ingin Menghapus ?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }) .then((willDelete) => {
+            if (willDelete) {
+                {
+                    e.target.parentElement.style.display = "none";
+                    e.preventDefault();
+                    swal("Berhasil Menghapus!", { icon: "success", });
+                }
+            }
+        });
     /* Mengecek class apakah bernilai Done sehingga ketika terpenuhi maka coret dengan
-       set text-decoration menjadi line-through */
+       set text-decoration menjadi line-through
+    */
     } else if(e.target.className == "Done"){
-        const Opsi = Number(prompt("Apakah Anda Yakin Untuk Menyelesaikan ini ? (1. Ya, 2. Tidak)"), [1, 2]);
-        if(Opsi == 1){
-            e.target.parentElement.style.backgroundColor = "lightgreen";
-            e.target.parentElement.style.textDecoration = "line-through";
-            e.target.style.color = "red";
-            e.preventDefault();
-        } else if(Opsi == 2){
-            //
-        } else {
-            alert("Terjadi Kesalahan");
-        }
+
+        swal({
+            title: "Peringatan",
+            text: "Apakah Anda Yakin Ingin Menyelesaikan List Ini ?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }) .then((willDelete) => {
+            if (willDelete) {
+                {
+                    e.target.parentElement.style.backgroundColor = "lightgreen";
+                    e.target.parentElement.style.textDecoration = "line-through";
+                    e.target.style.color = "red";
+                    e.preventDefault();
+                    swal("Berhasil Menyelesaikan List Dari Daftar!", { icon: "success", });
+                }
+            }
+        });
     }
 });
 
@@ -39,26 +54,28 @@ Tambah.addEventListener("click", ()=>{
     const Buku = document.getElementById("InputBuku");
 
     if(Buku.value != ""){
-        // Menambahkan nilai
-        const Nilai = "<li>" + 
+
+        swal({
+            title: "Peringatan",
+            text: "Apakah Anda Yakin Ingin Menambahkan List ?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }) .then((willDelete) => {
+            if (willDelete) {
+                {
+                    const Nilai = "<li>" + 
                         Buku.value + 
                         "<span class='Done'>&radic;</span>" +
                         "<span class='Close'> X </span>" + 
                         "</li>" ;
-        Data.insertAdjacentHTML("afterbegin", Nilai);
+                    Data.insertAdjacentHTML("afterbegin", Nilai);
 
-        // Membuat form inputan kosong kembali
-        Buku.value = "";
-    } else {
-        alert("Terjadi kesalahan. Silahkan periksa dan isi kembali !");
+                    // Membuat form inputan kosong kembali
+                    Buku.value = "";
+                    swal("Berhasil Di Tambahkan!", { icon: "success", });
+                }
+            }
+        });
     }
-    
-    // const Daftar = document.createElement("li");
-    // const Nilai = document.createTextNode(Buku.value);
-    // Daftar.appendChild(Nilai);
-    // Data.appendChild(Daftar);
-
-    // console.log(Data);
-    // console.log(Draf);
-
 });
